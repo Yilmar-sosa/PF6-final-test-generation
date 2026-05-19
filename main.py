@@ -61,6 +61,7 @@ def dish_fetch(num):
 
 
 def main():
+
     print("===================================")
     print(" MENÚ DE PLATOS TÍPICOS COLOMBIANOS ")
     print("===================================")
@@ -68,26 +69,39 @@ def main():
     print("\n¡Bienvenido!")
     print("Aquí podrás explorar platos típicos de Colombia.\n")
 
-    # Mostramos platos disponibles
-    show_dishes()
+    # Bucle principal del programa
+    while True:
 
-    try:
-        num = int(input("Por favor ingresa el número del plato: "))
+        # Mostramos platos disponibles
+        show_dishes()
 
-        print("\nProcesando tu solicitud...")
+        try:
+            num = int(input("Por favor ingresa el número del plato: "))
 
-        dish = dish_fetch(num)
+            print("\nProcesando tu solicitud...")
 
-        print("\n========== INFORMACIÓN DEL PLATO ==========\n")
+            dish = dish_fetch(num)
 
-        for key, value in dish.items():
-            print(f"{key}: {value}")
+            print("\n========== INFORMACIÓN DEL PLATO ==========\n")
 
-        print("\n===========================================")
+            for key, value in dish.items():
+                print(f"{key}: {value}")
 
-    except ValueError:
-        print("\nEntrada inválida.")
-        print("Por favor ingresa únicamente números.")
+            print("\n===========================================")
+
+        except ValueError:
+            print("\nEntrada inválida.")
+            print("Por favor ingresa únicamente números.")
+
+        # Preguntamos si desea continuar
+        option = input(
+            "\n¿Deseas consultar otro plato? (si/no): "
+        ).lower()
+
+        if option != "si":
+            print("\nGracias por usar el menú de platos típicos.")
+            print("¡Hasta luego!")
+            break
 
 
 if __name__ == "__main__":
